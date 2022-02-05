@@ -12,6 +12,18 @@ TypeScript supports up to 10000 variants for a single union and a limited recurs
 
 # Usage
 
+```ts
+import { Range } from "ts-dependent-types";
+
+const logNumberInRange = (value: Range<0, 10>) => console.log(value);
+```
+
+```ts
+type TwoDigitHexadecimal = `${HexadecimalDigit}${HexadecimalDigit}`; // "00" | "01" | .. | "FF"
+
+const x64AssemblyCallInstruction: TwoDigitHexadecimal = "FF";
+```
+
 # Exports
 
 ## Numbers
