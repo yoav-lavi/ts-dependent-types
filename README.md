@@ -67,9 +67,9 @@ logNumberInRange(40);
 
 logNumberInRange(11); // this will error
 
-type SupportedRange = Range<0, 48>; // 0 | 1 | ... | 48
+type SupportedRange = RangeUnsigned<0, 48>; // 0 | 1 | ... | 48
 
-type UnsupportedRange = Range<0, 100>; // this will error
+type UnsupportedRange = RangeUnsigned<0, 100>; // this will error
 ```
 
 ## `NextPowerOf2`
