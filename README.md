@@ -2,7 +2,7 @@
 
 An experimental definition of dependent types in TypeScript
 
-Dependent types are types that rely on the value of variables rather than only on types. These can be useful to further restrict contracts. 
+[Dependent types](https://en.wikipedia.org/wiki/Dependent_type) are types that rely on the value of variables rather than only on types. These can be useful to further restrict contracts. 
 
 For example: 
 
