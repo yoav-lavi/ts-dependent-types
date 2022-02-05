@@ -4,7 +4,9 @@ An experimental definition of dependent types in TypeScript
 
 Dependent types are types that rely on the value of variables rather than only on types. These can be useful to further restrict contracts. 
 
-For example: Given a function that retries and operation, we want to limit the number of retries to a range of 1 to 5
+For example: 
+
+> Given a function that retries and operation, we want to limit the number of retries to a range of 1 to 5
 
 TypeScript supports up to 10000 variants for a single union and a limited recursion depth, so these types have some limitations if used in certian ways.
 
