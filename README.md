@@ -170,6 +170,6 @@ Produces a range of `LowercaseLetter`s between two given `LowercaseLetter`s
 type LowercaseAtoD = LowercaseLetterRange<'a', 'd'>; // "a" | "b" | "c" | "d"
 ```
 
-# Prior art
+# Prior Art
 
 Some of these types have definitions or equivalents in other libraries (TODO: add links)
