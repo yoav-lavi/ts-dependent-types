@@ -8,7 +8,7 @@ For example:
 
 > Given a function that retries and operation, we want to limit the number of retries to a range of 1 to 5
 
-TypeScript supports up to 10000 variants for a single union and a limited recursion depth, so these types have some limitations if used in conjunction (e.g. a YYYY-MM-DD template string would be well over the limit). This is also the reasoning for some of the provided ranges of numbers.
+TypeScript supports a limited number of members for a single union and a limited recursion depth, so these types have some limitations if used in conjunction (e.g. a YYYY-MM-DD template string would be well over the limit). This is also the reasoning for some of the provided ranges of numbers. One of the [changes](https://github.com/microsoft/TypeScript/issues/34933) for TypeScript 4.6.1 will allow to change this limit.
 
 # Usage
 
