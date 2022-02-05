@@ -1,0 +1,12 @@
+{
+  "name": "ts-dependent-types",
+  "description": "An experimental definition of dependent types in TypeScript",
+  "author": "Yoav Lavi",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5"
+  }
+}
