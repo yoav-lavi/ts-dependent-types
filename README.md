@@ -2,9 +2,33 @@
 
 An experimental definition of dependent types in TypeScript
 
-# Numbers
+[Dependent types](https://en.wikipedia.org/wiki/Dependent_type) are types that rely on the value of variables rather than only on types. These can be useful to further restrict contracts. 
 
-## `Increment`
+For example: 
+
+> Given a function that retries and operation, we want to limit the number of retries to a range of 1 to 5
+
+TypeScript supports up to 10000 variants for a single union and a limited recursion depth, so these types have some limitations if used in conjunction (e.g. a YYYY-MM-DD template string would be well over the limit). This is also the reasoning for some of the provided ranges of numbers.
+
+# Usage
+
+```ts
+import { Range } from "ts-dependent-types";
+
+const logNumberInRange = (value: Range<0, 10>) => console.log(value);
+```
+
+```ts
+type TwoDigitHexadecimal = `${HexadecimalDigit}${HexadecimalDigit}`; // "00" | "01" | .. | "FF"
+
+const x64AssemblyCallInstruction: TwoDigitHexadecimal = "FF";
+```
+
+# Exports
+
+## Numbers
+
+### `Increment`
 
 `Increment` takes a number in the range of -24 to 24 and produces a literal of the following number
 
@@ -12,7 +36,7 @@ An experimental definition of dependent types in TypeScript
 type Five = Increment<4>; // 5
 ```
 
-## `IncrementUnsigned`
+### `IncrementUnsigned`
 
 `IncrementUnsigned` takes a number in the range of 0 to 48 and produces a literal of the following number
 
@@ -20,7 +44,7 @@ type Five = Increment<4>; // 5
 type FourtyEight = IncrementUnsigned<47>; // 48
 ```
 
-## `Decrement`
+### `Decrement`
 
 `Decrement` takes a number in the range of -24 to 24 and produces a literal of the previous number
 
@@ -28,7 +52,7 @@ type FourtyEight = IncrementUnsigned<47>; // 48
 type Three = Decrement<4>; // 3
 ```
 
-## `DecrementUnsigned`
+### `DecrementUnsigned`
 
 `DecrementUnsigned` takes a number in the range of 0 to 48 and produces a literal of the previous number
 
@@ -36,11 +60,11 @@ type Three = Decrement<4>; // 3
 type FourtySix = Decrement<47>; // 46
 ```
 
-## `Digit`
+### `Digit`
 
 A type corresponding to the range of `0` to `9`
 
-## `Range`
+### `Range`
 
 ```ts
 const logNumberInRange = (value: Range<0, 10>) => console.log(value);
@@ -56,7 +80,7 @@ type SupportedRange = Range<-24, 24>; // -24 | -23 | ... | 24
 type UnsupportedRange = Range<0, 100>; // this will error
 ```
 
-## `RangeUnsigned`
+### `RangeUnsigned`
 
 ```ts
 const logNumberInRange = (value: RangeUnsigned<30, 48>) => console.log(value);
@@ -67,18 +91,18 @@ logNumberInRange(40);
 
 logNumberInRange(11); // this will error
 
-type SupportedRange = Range<0, 48>; // 0 | 1 | ... | 48
+type SupportedRange = RangeUnsigned<0, 48>; // 0 | 1 | ... | 48
 
-type UnsupportedRange = Range<0, 100>; // this will error
+type UnsupportedRange = RangeUnsigned<0, 100>; // this will error
 ```
 
-## `NextPowerOf2`
+### `NextPowerOf2`
 
 ```ts
 type SomePowerOf2 = NextPowerOf2<4>; // 8
 ```
 
-## `PowerOf2Range`
+### `PowerOf2Range`
 
 ```ts
 type FourPowersOf2 = PowerOf2Range<4>; // 2 | 4 | 8 | 16
@@ -86,35 +110,35 @@ type FourPowersOf2 = PowerOf2Range<4>; // 2 | 4 | 8 | 16
 type SupportedPowersOf2 = PowerOf2Range; // 2 | 4 | ... | 281474976710656
 ```
 
-# Strings
+## Strings
 
-## `Character`
+### `Character`
 
 A type corresponding to any printable ASCII character
 
-## `HexadecimalDigit`
+### `HexadecimalDigit`
 
 ```ts
 type TwoDigitHexadecimal = `${HexadecimalDigit}${HexadecimalDigit}`; // "00" | "01" | .. | "FF"
 ```
 
-## `UppercaseLetter`
+### `UppercaseLetter`
 
 Any uppercase ASCII letter
 
-## `LowercaseLetter`
+### `LowercaseLetter`
 
 Any lowercase ASCII letter
 
-## `Letter`
+### `Letter`
 
 Any ASCII letter
 
-## `SpecialCharacter`
+### `SpecialCharacter`
 
 Any printable special ASCII letter
 
-## `NextUppercaseLetter`
+### `NextUppercaseLetter`
 
 `Increment` takes a `Letter` and produces the follwing letter
 
@@ -122,7 +146,7 @@ Any printable special ASCII letter
 type B = NextUppercaseLetter<'A'>; // "B"
 ```
 
-## `PreviousUppercaseLetter`
+### `PreviousUppercaseLetter`
 
 `Increment` takes an `UppercaseLetter` and produces the previous letter
 
@@ -130,7 +154,7 @@ type B = NextUppercaseLetter<'A'>; // "B"
 type A = PreviousUppercaseLetter<'B'>; // "A"
 ```
 
-## `NextLowercaseLetter`
+### `NextLowercaseLetter`
 
 `Increment` takes a `LowercaseLetter` and produces the previous letter
 
@@ -138,7 +162,7 @@ type A = PreviousUppercaseLetter<'B'>; // "A"
 type LowercaseB = NextLowercaseLetter<'a'>; // "b"
 ```
 
-## `PreviousLowercaseLetter`
+### `PreviousLowercaseLetter`
 
 `Increment` takes an `UppercaseLetter` and produces the previous letter
 
@@ -146,7 +170,7 @@ type LowercaseB = NextLowercaseLetter<'a'>; // "b"
 type LowercaseA = PreviousLowercaseLetter<'b'>; // "a"
 ```
 
-## `UppercaseLetterRange`
+### `UppercaseLetterRange`
 
 Produces a range of `UppercaseLetter`s between two given `UppercaseLetter`s
 
@@ -154,10 +178,14 @@ Produces a range of `UppercaseLetter`s between two given `UppercaseLetter`s
 type AtoD = UppercaseLetterRange<'A', 'D'>; // "A" | "B" | "C" | "D"
 ```
 
-## `LowercaseLetterRange`
+### `LowercaseLetterRange`
 
 Produces a range of `LowercaseLetter`s between two given `LowercaseLetter`s
 
 ```ts
 type LowercaseAtoD = LowercaseLetterRange<'a', 'd'>; // "a" | "b" | "c" | "d"
 ```
+
+# Prior Art
+
+Some of these types have definitions or equivalents in other libraries (TODO: add links)
