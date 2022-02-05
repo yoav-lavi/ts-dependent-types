@@ -1,6 +1,6 @@
 # ts-dependent-types
 
-An experimental definition of dependent types in TypeScript
+An experimental collection of dependent type definitions in TypeScript
 
 [Dependent types](https://en.wikipedia.org/wiki/Dependent_type) are types that rely on the value of variables rather than only on types. These can be useful to further restrict contracts. 
 
