@@ -188,4 +188,4 @@ type LowercaseAtoD = LowercaseLetterRange<'a', 'd'>; // "a" | "b" | "c" | "d"
 
 # Prior Art
 
-Some of these types have definitions or equivalents in other libraries (TODO: add links)
+(TODO: add links and examples)
