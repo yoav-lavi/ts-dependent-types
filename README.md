@@ -144,7 +144,7 @@ Any ASCII letter
 
 ### `SpecialCharacter`
 
-Any printable special ASCII letter
+Any printable special ASCII character
 
 ### `NextUppercaseLetter`
 
