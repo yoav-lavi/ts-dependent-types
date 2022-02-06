@@ -66,6 +66,8 @@ A type corresponding to the range of `0` to `9`
 
 ### `Range`
 
+Represents a union of number literals between two numbers, supports `-24` to `24`
+
 ```ts
 const logNumberInRange = (value: Range<0, 10>) => console.log(value);
 
@@ -81,6 +83,8 @@ type UnsupportedRange = Range<0, 100>; // this will error
 ```
 
 ### `RangeUnsigned`
+
+Represents a union of number literals between two numbers, supports `0` to `48`
 
 ```ts
 const logNumberInRange = (value: RangeUnsigned<30, 48>) => console.log(value);
@@ -98,11 +102,15 @@ type UnsupportedRange = RangeUnsigned<0, 100>; // this will error
 
 ### `NextPowerOf2`
 
+Represents 2^T+1
+
 ```ts
 type SomePowerOf2 = NextPowerOf2<4>; // 8
 ```
 
 ### `PowerOf2Range`
+
+Represents a union of powers of 2 up to 2^T
 
 ```ts
 type FourPowersOf2 = PowerOf2Range<4>; // 2 | 4 | 8 | 16
