@@ -102,7 +102,7 @@ type UnsupportedRange = RangeUnsigned<0, 100>; // this will error
 
 ### `NextPowerOf2`
 
-Represents 2^T+1
+Represents 2^(T+1)
 
 ```ts
 type SomePowerOf2 = NextPowerOf2<4>; // 8
